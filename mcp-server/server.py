@@ -7,10 +7,7 @@ from mcp.server.fastmcp import FastMCP
 
 load_dotenv()
 
-mcp = FastMCP(
-    "Propellernet",
-    description="Internal skills and data for Propellernet agents",
-)
+mcp = FastMCP("Propellernet")
 
 # Register skills
 from skills.ping import register as register_ping  # noqa: E402
