@@ -1,0 +1,27 @@
+services:
+  openclaw-gateway:
+    image: openclaw/openclaw:latest
+    ports:
+      - "18789:18789"
+      - "18790:18790"
+    volumes:
+      - ./openclaw:/home/node/.openclaw
+      - gateway-data:/home/node/.openclaw/workspace
+    env_file: .env
+    environment:
+      - OPENCLAW_CONFIG_DIR=/home/node/.openclaw
+    depends_on:
+      - mcp-server
+    restart: unless-stopped
+
+  mcp-server:
+    build:
+      context: ./mcp-server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    env_file: .env
+    restart: unless-stopped
+
+volumes:
+  gateway-data:

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://openclaw.ai/schemas/openclaw.json",
+
+  "agents": {
+    "defaults": {
+      "models": {
+        "primary": "anthropic/claude-sonnet-4-5",
+        "fallback": "anthropic/claude-haiku-4-5"
+      }
+    },
+    "entries": {
+      "sam": {
+        "agentDir": "./agents/sam",
+        "description": "Strategic intelligence for Sam (CEO)"
+      },
+      "gill": {
+        "agentDir": "./agents/gill",
+        "description": "Operational oversight for Gill (Ops Director)"
+      },
+      "sophie": {
+        "agentDir": "./agents/sophie",
+        "description": "General-purpose agent — testable across multiple roles"
+      }
+    }
+  },
+
+  "channels": {
+    "slack": {
+      "accounts": {
+        "sam-agent": {
+          "botToken": "${SLACK_BOT_TOKEN_SAM}",
+          "appToken": "${SLACK_APP_TOKEN_SAM}"
+        },
+        "gill-agent": {
+          "botToken": "${SLACK_BOT_TOKEN_GILL}",
+          "appToken": "${SLACK_APP_TOKEN_GILL}"
+        },
+        "sophie-agent": {
+          "botToken": "${SLACK_BOT_TOKEN_SOPHIE}",
+          "appToken": "${SLACK_APP_TOKEN_SOPHIE}"
+        }
+      },
+      "dm": {
+        "policy": "allowlist"
+      }
+    }
+  },
+
+  "mcp": {
+    "servers": {
+      "propellernet": {
+        "transport": "sse",
+        "url": "http://mcp-server:8080/sse"
+      }
+    }
+  },
+
+  "skills": {
+    "load": {
+      "extraDirs": ["./skills"]
+    }
+  },
+
+  "subagents": {
+    "enabled": true,
+    "maxConcurrent": 3,
+    "timeoutSeconds": 1800
+  }
+}
