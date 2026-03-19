@@ -12,8 +12,10 @@ mcp = FastMCP(
     description="Internal skills and data for Propellernet agents",
 )
 
-# Import skills to register them with the server
-from skills import ping  # noqa: F401, E402
+# Register skills
+from skills.ping import register as register_ping  # noqa: E402
+
+register_ping(mcp)
 
 
 if __name__ == "__main__":
