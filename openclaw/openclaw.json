@@ -1,19 +1,6 @@
 {
-  "$schema": "https://openclaw.ai/schemas/openclaw.json",
-
   "gateway": {
     "bind": "lan",
     "port": 18789
-  },
-
-  "agents": {
-    "defaults": {
-      "models": {
-        "primary": {
-          "provider": "anthropic",
-          "model": "claude-sonnet-4-5"
-        }
-      }
-    }
   }
 }
