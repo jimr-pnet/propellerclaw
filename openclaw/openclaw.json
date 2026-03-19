@@ -2,6 +2,7 @@
   "gateway": {
     "bind": "lan",
     "port": 18789,
+    "mode": "local",
     "controlUi": {
       "allowedOrigins": [
         "https://openclaw-gateway-production-fef1.up.railway.app",

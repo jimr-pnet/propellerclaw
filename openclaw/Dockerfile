@@ -12,7 +12,7 @@ RUN chown -R node:node /home/node/.openclaw
 
 USER node
 
-# Auto-fix config issues then start the gateway
-CMD ["sh", "-c", "openclaw doctor --fix 2>/dev/null; exec openclaw gateway run"]
+# Fix permissions, run doctor, then start gateway in foreground
+CMD ["sh", "-c", "chmod 700 /home/node/.openclaw && chmod 600 /home/node/.openclaw/openclaw.json && openclaw doctor --fix 2>/dev/null; exec openclaw gateway run --foreground"]
 
 EXPOSE 18789
