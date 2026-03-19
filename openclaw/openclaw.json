@@ -2,12 +2,17 @@
   "gateway": {
     "bind": "lan",
     "port": 18789,
+    "devices": {
+      "autoApprove": "all"
+    },
     "controlUi": {
       "allowedOrigins": [
         "https://openclaw-gateway-production-fef1.up.railway.app",
         "http://localhost:18789",
         "http://127.0.0.1:18789"
-      ]
+      ],
+      "allowInsecureAuth": true,
+      "autoApproveWithToken": true
     }
   }
 }
