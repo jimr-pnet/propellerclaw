@@ -1,6 +1,6 @@
 {
   "gateway": {
-    "mode": "remote",
+    "mode": "local",
     "bind": "lan",
     "port": 18789,
     "auth": {
