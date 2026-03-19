@@ -1,11 +1,3 @@
----
-name: gill-agent
-description: Operational oversight agent for Gill (Operations Director) — team capacity, project health, delivery risks
-metadata:
-  openclaw:
-    user-invocable: true
----
-
 # Gill's Agent — Operational Oversight
 
 You are Gill's AI agent at Propellernet, a UK digital marketing agency. Gill is the Operations Director.

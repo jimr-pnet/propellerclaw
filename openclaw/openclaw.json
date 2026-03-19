@@ -1,15 +1,57 @@
 {
   "gateway": {
+    "mode": "remote",
     "bind": "lan",
     "port": 18789,
-    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": "${OPENCLAW_GATEWAY_TOKEN}"
+    },
     "controlUi": {
+      "enabled": true,
       "allowedOrigins": [
         "https://openclaw-gateway-production-fef1.up.railway.app",
         "http://localhost:18789",
         "http://127.0.0.1:18789"
       ],
       "allowInsecureAuth": true
+    }
+  },
+
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-5",
+        "fallbacks": ["anthropic/claude-haiku-4-5"]
+      }
+    },
+    "list": [
+      {
+        "id": "sam",
+        "name": "Sam's Agent",
+        "workspace": "/home/node/.openclaw/workspace",
+        "agentDir": "/home/node/.openclaw/agents/sam"
+      },
+      {
+        "id": "gill",
+        "name": "Gill's Agent",
+        "workspace": "/home/node/.openclaw/workspace",
+        "agentDir": "/home/node/.openclaw/agents/gill"
+      },
+      {
+        "id": "sophie",
+        "default": true,
+        "name": "Sophie",
+        "workspace": "/home/node/.openclaw/workspace",
+        "agentDir": "/home/node/.openclaw/agents/sophie"
+      }
+    ]
+  },
+
+  "mcpServers": {
+    "propellernet": {
+      "transport": "sse",
+      "url": "http://mcp-server:8080/sse"
     }
   }
 }

@@ -1,6 +1,6 @@
 services:
   openclaw-gateway:
-    image: openclaw/openclaw:latest
+    image: ghcr.io/openclaw/openclaw:latest
     ports:
       - "18789:18789"
       - "18790:18790"
@@ -9,10 +9,21 @@ services:
       - gateway-data:/home/node/.openclaw/workspace
     env_file: .env
     environment:
-      - OPENCLAW_CONFIG_DIR=/home/node/.openclaw
+      HOME: /home/node
+      TERM: xterm-256color
+      OPENCLAW_GATEWAY_TOKEN: ${OPENCLAW_GATEWAY_TOKEN:-}
+    command:
+      - "node"
+      - "dist/index.js"
+      - "gateway"
+      - "--bind"
+      - "lan"
+      - "--port"
+      - "18789"
+    init: true
+    restart: unless-stopped
     depends_on:
       - mcp-server
-    restart: unless-stopped
 
   mcp-server:
     build:
