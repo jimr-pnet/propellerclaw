@@ -23,8 +23,8 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openai/gpt-5.4-nano",
-        "fallbacks": ["openai/gpt-5.4-nano"]
+        "primary": "openai/gpt-4o-mini",
+        "fallbacks": ["openai/gpt-4o-mini"]
       }
     },
     "list": [
